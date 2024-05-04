@@ -8,7 +8,7 @@ function init() {
   const audio = document.querySelector('audio');
   setVolume(audio)
   hornSetup(hornID, image, audio);
-  playSound(audio);
+  playSound(hornID, audio);
 }
 
 function hornSetup(hornID, image, audio) {
@@ -19,11 +19,15 @@ function hornSetup(hornID, image, audio) {
   })
 }
 
-function playSound(audio) {
+function playSound(hornID, audio) {
+  const jsConfetti = new JSConfetti();
   var button = document.querySelector("button");
   button.addEventListener("click", function() {
     audio.load();
     audio.play();
+    if(hornID.value == "party-horn") {
+      jsConfetti.addConfetti();
+    }
   })
 }
 function setVolume(audio) {
