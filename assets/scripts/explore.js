@@ -39,9 +39,9 @@ function populateVoiceList(speak) {
     // Get the index of the selected option
     i = this.selectedIndex;
   });
-
+  var smilingFace = document.querySelector("#explore img");
   const synth = window.speechSynthesis;
-
+  // SPEAKING PART
   var button = document.querySelector("button"); 
   if (speak) { 
     button.addEventListener("click", function() {
@@ -49,6 +49,12 @@ function populateVoiceList(speak) {
       speaking.text = text.value;
       speaking.voice = voices[i-1];
       synth.speak(speaking);
+      if (synth.speaking) {
+        smilingFace.src = "assets/images/smiling-open.png";
+        console.log("i am speaking");
+      }
+      console.log("not speaking"); 
+      // smilingFace.src = "assets/images/smiling.png";
     });
   }
 }
