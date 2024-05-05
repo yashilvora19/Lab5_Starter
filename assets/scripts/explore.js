@@ -49,7 +49,7 @@ function populateVoiceList(speak) {
       speaking.text = text.value;
       speaking.voice = voices[i-1];
 
-      //image update
+      //image smiling update
       speaking.onstart = () => {
         smilingFace.src = "assets/images/smiling-open.png";
       };
