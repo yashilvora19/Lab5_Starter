@@ -48,13 +48,16 @@ function populateVoiceList(speak) {
       let speaking = new SpeechSynthesisUtterance();
       speaking.text = text.value;
       speaking.voice = voices[i-1];
-      synth.speak(speaking);
-      if (synth.speaking) {
+
+      //image update
+      speaking.onstart = () => {
         smilingFace.src = "assets/images/smiling-open.png";
-        console.log("i am speaking");
-      }
-      console.log("not speaking"); 
-      // smilingFace.src = "assets/images/smiling.png";
+      };
+      speaking.onend = () => {
+        smilingFace.src = "assets/images/smiling.png";
+      };
+
+      synth.speak(speaking);
     });
   }
 }
